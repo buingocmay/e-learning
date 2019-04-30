@@ -10,7 +10,14 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery-1.11.1.min
+//= require bootstrap.min
+//= require easing
+//= require move-top
+//= require responsiveslides.min
+//= require skdslider.min
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
+//= require cable
+//= require home
