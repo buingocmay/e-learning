@@ -1,0 +1,38 @@
+<div class="login">
+  <div class="container">
+    <h2>Login</h2>
+    <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
+      <%= form_for resource, as: resource_name,
+        url: session_path(resource_name) do |f| %>
+        <div class="form-group">
+          <label for="recipient-name" class="col-form-label"><%= "Email" %>
+          </label>
+          <%= f.email_field :email, autofocus: true, class: "form-control field" %>
+        </div>
+        <div class="form-group">
+          <label for="password" class="col-form-label"><%= "Password" %>
+          </label>
+          <%= f.password_field :password, class: "form-control field" %>
+        </div>
+        <div class="right-w3l">
+          <div class="actions">
+            <%= f.submit "Login", class: "btn btn-submit btn-success" %>
+          </div><br>
+          <div class="col sub-w3ltd">
+            <% if devise_mapping.rememberable? %>
+              <%= f.check_box :remember_me %>
+            <% end %>
+            <label for="brand1" class="text-dark">
+              <span></span><%= "Remember me" %></label>
+          </div>
+        </div>
+        <p class="text-center dont-do">
+          <% unless resource_name == :admin %>
+            <%= "New user?" %>
+          <% end %>
+          <%= render "devise/shared/links" %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>
