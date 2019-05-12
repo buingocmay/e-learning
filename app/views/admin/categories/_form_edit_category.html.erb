@@ -1,0 +1,7 @@
+<%= form_for [:admin, @category], remote: true, authenticity_token: true do |f| %>
+	<div class="form-group">
+    <%= f.label :name, "Tên danh mục" %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <center><%= f.submit "Lưu lại", class: "btn btn-primary mb-3" %>
+<% end %>

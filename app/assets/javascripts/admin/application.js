@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require ../admin/jquery2.0.3.min
 //= require ../admin/bootstrap
 //= require ../admin/raphael-min
@@ -20,10 +21,10 @@
 //= require ../admin/jquery.nicescroll
 //= require ../admin/jquery.scrollTo
 //= require ../admin/monthly
+//= require ../admin/custom
 
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require cable
-//= require home
 //= require_tree .

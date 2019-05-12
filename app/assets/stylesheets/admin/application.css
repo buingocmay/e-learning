@@ -17,5 +17,6 @@
  *= require ../admin/font-awesome
  *= require ../admin/morris
  *= require ../admin/monthly
+ *= require ../admin/custom
  *= require_self
  */

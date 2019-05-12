@@ -33,7 +33,6 @@
 
 		//call in the default otions
 		var options = $.extend(defaults, options);
-
 		this.each(function(options){
 
 			var obj = this;
@@ -45,9 +44,7 @@
 				$('li.'+defaults.classExpand+' > a').addClass(defaults.classActive);
 			}
 			resetAccordion();
-
 			if(defaults.eventType == 'hover'){
-
 				var config = {
 					sensitivity: 2, // number = sensitivity threshold (must be 1 or higher)
 					interval: defaults.hoverDelay, // number = milliseconds for onMouseOver polling interval
@@ -78,13 +75,10 @@
 				}
 
 			} else {
-			
 				$('li a',obj).click(function(e){
-
 					$activeLi = $(this).parent('li');
 					$parentsLi = $activeLi.parents('li');
 					$parentsUl = $activeLi.parents('ul');
-
 					// Prevent browsing to link if has child links
 					if(defaults.disableLink == true){
 						if($(this).siblings('ul').length >0){
@@ -104,7 +98,6 @@
 						$(this).siblings('ul').slideToggle(defaults.speed);
 						$('> a',$activeLi).addClass(defaults.classActive);
 					}
-					
 //					// Write cookie if save state is on
 //					if(defaults.saveState == true){
 //						createCookie(defaults.cookie, obj);
