@@ -33,7 +33,8 @@
 			<tr>
 				<td></td>
 				<td>
-					<h4 id="h4.-bootstrap-heading"><%= unit.name %>
+					<h4 id="h4.-bootstrap-heading">
+						<%= link_to unit.name, admin_category_unit_path(category, unit) %>
 						<a class="anchorjs-link" href="#h4.-bootstrap-heading"><span class="anchorjs-icon"></span></a>
 					</h4>
 				</td>

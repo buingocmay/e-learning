@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   	resources :categories do
   		resources :units
   	end
+    resources :courses
   	
   	root "static_pages#home"
   end

@@ -1,0 +1,39 @@
+<% provide :title, "Unit" %>
+<div class="table-agile-info">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Các khóa học trong <%= @unit.name %>
+    </div><br>
+
+    <%= link_to "#", remote: true, class: "btn btn-info btn-sm",
+			data: {
+				toggle: "modal",
+				url: new_admin_course_path,
+				unit_id: @unit.id,
+				target: "#modal-create-course"
+			}, id: "new-course" do %>
+			Thêm mới khóa học
+		<% end %>
+    <hr>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th data-breakpoints="xs">#</th>
+            <th>Tên khóa học</th>
+            <th>Số chương</th>
+            <th data-breakpoints="xs">Số bài học</th>
+            <th>Tác vụ</th>
+          </tr>
+        </thead>
+        <tbody class="list-courses">
+        	<%= render "admin/units/list_courses" %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="modal-create-course" class="modal fade" role="dialog"></div>
+
+<div id="modal-edit-course" class="modal fade" role="dialog"></div>
