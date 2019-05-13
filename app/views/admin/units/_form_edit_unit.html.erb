@@ -1,0 +1,11 @@
+<%= form_for [:admin, :category, @unit], remote: true do |f| %>
+	<div class="form-group">
+    <%= f.label :category_id, "Danh mục đào tạo" %>
+    <%= f.select :category_id, options_for_select(@category_options, @category.id), {},class: "form-control" %>
+  </div>
+	<div class="form-group">
+    <%= f.label :name, "Tên unit" %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <center><%= f.submit "Lưu lại", class: "btn btn-primary mb-3" %>
+<% end %>

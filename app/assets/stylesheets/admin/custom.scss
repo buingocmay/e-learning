@@ -13,3 +13,11 @@
 .alert-notice hr {
   border-top-color: #c9e2b3;
 }
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 20px;
+  }
+}

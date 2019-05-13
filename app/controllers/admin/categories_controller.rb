@@ -6,6 +6,7 @@ class Admin::CategoriesController < Admin::AdminController
   end
 
   def new
+    binding.pry
   	@category = Category.new
   end
 
@@ -16,8 +17,7 @@ class Admin::CategoriesController < Admin::AdminController
   		flash[:success] = "Tạo mới thành công"
       @categories=Category.all
   	else
-  		flash[:danger] = "Có lỗi xảy ra"
-  		redirect_to admin_categories_url
+  		flash[:danger] = "Tạo thất bại"
   	end
   end
 
@@ -29,8 +29,7 @@ class Admin::CategoriesController < Admin::AdminController
   		flash[:success] = "Cập nhật thành công"
       @categories=Category.all
     else
-      flash[:danger] = "Có lỗi xảy ra"
-      redirect_to admin_categories_url
+      render :edit
     end
   end
 
@@ -39,7 +38,7 @@ class Admin::CategoriesController < Admin::AdminController
       @categories = Category.all
       flash[:success] = "Xóa thành công"
     else
-      flash[:danger] = "Có lỗi xảy ra"
+      flash[:danger] = "Xóa thất bại"
     end
   end
 

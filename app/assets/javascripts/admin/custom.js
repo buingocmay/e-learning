@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	jQuery.noConflict();
+  jQuery.noConflict();
 	var url = window.location.pathname;
 	var urlRegExp = new RegExp(url.replace(/\/$/, '') + "$");
 	$('#sidebar a').each(function(){
@@ -8,12 +8,27 @@ $(document).ready(function(){
 		}
 	});
 
-
 	$('.autohide').delay(2000).slideUp('slow');
 
 });
 
 $(document).on('click', '#edit-category', function() {
+  $.ajax({
+    url: $(this).data('url'),
+    type: 'GET',
+    dataType: 'script'
+  });
+});
+
+$(document).on('click', '#new-unit', function() {
+  $.ajax({
+    url: $(this).data('url'),
+    type: 'GET',
+    dataType: 'script'
+  });
+});
+
+$(document).on('click', '#edit-unit', function() {
   $.ajax({
     url: $(this).data('url'),
     type: 'GET',
