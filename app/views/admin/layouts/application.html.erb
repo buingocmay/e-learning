@@ -2,6 +2,8 @@
 <html>
   <head>
     <title><%= full_title yield :title %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -16,6 +18,14 @@
       <%= render "admin/layouts/sidebar" %>
       <section id="main-content">
         <section class="wrapper">
+          <div class="flash-errors">
+            <% flash.each do |message_type, message| %>
+              <div class="autohide alert alert-<%= message_type.gsub('alert', 'warning') %>
+                text-center">
+                <%= message.try(:html_safe) %>
+              </div>
+            <% end %>
+          </div>
           <%= yield %>          
         </section>
         <%= render "admin/layouts/footer" %>

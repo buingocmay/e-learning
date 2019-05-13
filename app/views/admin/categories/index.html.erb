@@ -1,0 +1,17 @@
+<div class="typo-agile">
+	<h2 class="w3ls_head">Quản lý danh mục</h2>
+	<div class="grid_3 grid_4 w3layouts">
+		<h3 class="hdg">Danh mục đào tạo</h3>
+		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-create-category">Thêm mới</button>
+		<div class="bs-example">
+			<table class="table list-categories">
+				<%= render "list_categories" %>
+			</table>
+		</div>
+	</div>
+</div>
+
+<%= render "modal_create_category" %>
+
+<div id="modal-edit-category" class="modal fade" role="dialog">
+</div>
