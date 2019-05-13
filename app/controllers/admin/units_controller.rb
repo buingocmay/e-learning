@@ -35,6 +35,15 @@ class Admin::UnitsController < Admin::AdminController
     end
   end
 
+  def destroy
+    if @unit.destroy
+      @categories = Category.all
+      flash[:success] = "Xóa thành công"
+    else
+      flash[:danger] = "Xóa thất bại"
+    end
+  end
+
   private
 
   def find_unit
