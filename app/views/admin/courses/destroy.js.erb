@@ -1,0 +1,4 @@
+$('.list-courses').html('<%= j render "admin/units/list_courses",\
+  unit: @unit %>');
+$('.flash-errors').html('<%= j render "admin/layouts/flash_errors" %>');
+$('.autohide').delay(2000).slideUp('slow');

@@ -1,0 +1,22 @@
+<% @unit.courses.each_with_index do |course, index| %>
+  <tr data-expanded="true">
+    <td><%= index+1 %></td>
+    <td><%= course.name %></td>
+    <td><%= course.chapters.count %></td>
+    <td>5</td>
+    <td>
+    	<%= link_to "#", remote: true,
+				data: {
+					toggle: "modal",
+					url: edit_admin_course_path(course),
+					target: "#modal-edit-course",
+					unit_id: @unit.id
+				}, id: "edit-course" do %>
+				Sửa
+			<% end %>| 
+			<%= link_to admin_course_path(course), method: :delete, remote: true, data: {confirm: "Xóa?"} do %>
+				Xóa
+			<% end %>
+    </td>
+  </tr>
+<% end %>

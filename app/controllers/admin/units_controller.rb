@@ -1,10 +1,10 @@
 class Admin::UnitsController < Admin::AdminController
 	before_action :find_category, only: %i(new create edit update destroy)
-	before_action :find_unit, only: %i(edit update destroy)
+	before_action :find_unit, only: %i(show edit update destroy)
 
-  def index
-  	
-  end
+	def show
+			
+	end
 
   def new
   	@unit = Unit.new
@@ -19,7 +19,7 @@ class Admin::UnitsController < Admin::AdminController
       @categories=Category.all
   	else
   		flash[:danger] = "Tạo thất bại"
-  	end  	
+  	end
   end
 
   def edit

@@ -35,3 +35,25 @@ $(document).on('click', '#edit-unit', function() {
     dataType: 'script'
   });
 });
+
+$(document).on('click', '#new-course', function() {
+  $.ajax({
+    url: $(this).data('url'),
+    type: 'GET',
+    dataType: 'script',
+    data: {
+      unit_id: $(this).data('unitId')
+    }
+  });
+});
+
+$(document).on('click', '#edit-course', function() {
+  $.ajax({
+    url: $(this).data('url'),
+    type: 'GET',
+    dataType: 'script',
+    data: {
+      unit_id: $(this).data('unitId')
+    }
+  });
+});
