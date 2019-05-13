@@ -19,14 +19,9 @@
       <section id="main-content">
         <section class="wrapper">
           <div class="flash-errors">
-            <% flash.each do |message_type, message| %>
-              <div class="autohide alert alert-<%= message_type.gsub('alert', 'warning') %>
-                text-center">
-                <%= message.try(:html_safe) %>
-              </div>
-            <% end %>
+            <%= render "admin/layouts/flash_errors" %>
           </div>
-          <%= yield %>          
+          <%= yield %>
         </section>
         <%= render "admin/layouts/footer" %>
       </section>

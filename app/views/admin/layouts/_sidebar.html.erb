@@ -3,13 +3,13 @@
     <div class="leftside-navigation">
       <ul class="sidebar-menu" id="nav-accordion">
         <li>
-          <%= link_to admin_root_path, class: current_class?(admin_root_path) do %>
+          <%= link_to admin_root_path do %>
             <i class="fa fa-dashboard"></i>
             <span>Home</span>
           <% end %>
         </li>
         <li>
-          <%= link_to admin_categories_path, class: current_class?(admin_categories_path) do %>
+          <%= link_to admin_categories_path do %>
             <i class="fa fa-dashboard"></i>
             <span>Categories</span>
           <% end %>

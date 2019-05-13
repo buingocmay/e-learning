@@ -11,6 +11,14 @@
 				<%= link_to "#", remote: true,
 					data: {
 						toggle: "modal",
+						url: new_admin_category_unit_path(category),
+						target: "#modal-create-unit",
+					}, id: "new-unit" do %>
+						Thêm unit
+				<% end %>| 
+				<%= link_to "#", remote: true,
+					data: {
+						toggle: "modal",
 						url: edit_admin_category_path(category),
 						target: "#modal-edit-category"
 					}, id: "edit-category" do %>
@@ -29,7 +37,16 @@
 						<a class="anchorjs-link" href="#h4.-bootstrap-heading"><span class="anchorjs-icon"></span></a>
 					</h4>
 				</td>
-				<td></td>
+				<td>
+					<%= link_to "#", remote: true,
+						data: {
+							toggle: "modal",
+							url: edit_admin_category_unit_path(category, unit),
+							target: "#modal-edit-unit"
+						}, id: "edit-unit" do %>
+						Sửa
+					<% end %>
+				</td>
 			</tr>
 		<% end %>
 	<% end %>
