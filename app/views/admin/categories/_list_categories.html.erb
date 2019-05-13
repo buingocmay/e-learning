@@ -45,6 +45,9 @@
 							target: "#modal-edit-unit"
 						}, id: "edit-unit" do %>
 						Sửa
+					<% end %>| 
+					<%= link_to admin_category_unit_path(category, unit), method: :delete, remote: true, data: {confirm: "Xóa?"} do %>
+						Xóa
 					<% end %>
 				</td>
 			</tr>
