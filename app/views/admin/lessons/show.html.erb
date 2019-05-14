@@ -1,0 +1,8 @@
+<% provide :title, @lesson.name %>
+
+<div class="typo-agile">
+	<h2 class="w3ls_head"><%= @lesson.name %></h2>
+	<div class="grid_3 grid_5 agile content-lesson">
+		<%= sanitize @lesson.content %>
+	</div>
+</div>

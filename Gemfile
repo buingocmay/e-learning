@@ -18,7 +18,7 @@ gem "jquery-rails"
 gem "bootstrap-sass", "~> 3.3.7"
 gem "mini_magick"
 gem "carrierwave"
-gem "ckeditor"
+gem "ckeditor", "4.1.3"
 
 group :development, :test do
   gem "hirb"

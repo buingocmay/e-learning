@@ -546,7 +546,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
 }
 /*form*/
 .position-center {
-    width:62%;
+    width:85%;
     margin: 0 auto;
 }
 /*----*/
@@ -1406,6 +1406,11 @@ li.list-group-item1 {
     color: #b64d99;
     font-size: 26px;
     letter-spacing: 2px;
+}
+
+.content-lesson{
+    width:85%;
+    margin: 0 auto;
 }
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
 	border-top: none !important;
