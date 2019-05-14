@@ -1,7 +1,9 @@
 <% @unit.courses.each_with_index do |course, index| %>
   <tr data-expanded="true">
     <td><%= index+1 %></td>
-    <td><%= course.name %></td>
+    <td>
+    	<%= link_to course.name, admin_course_path(course) %>	
+  	</td>
     <td><%= course.chapters.count %></td>
     <td>5</td>
     <td>

@@ -1,0 +1,38 @@
+<% provide :title, "Course" %>
+
+<div class="table-agile-info">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <%= @course.name %>
+    </div><br>
+
+    <%= link_to "#", remote: true, class: "btn btn-info btn-sm",
+      data: {
+        toggle: "modal",
+        url: new_admin_chapter_path,
+        course_id: @course.id,
+        target: "#modal-create-chapter"
+      }, id: "new-chapter" do %>
+      Thêm mới chương
+    <% end %>
+    <hr>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th data-breakpoints="xs">#</th>
+            <th>Tên chương</th>
+            <th>Số bài học</th>
+            <th data-breakpoints="xs">Số câu hỏi trong chương</th>
+            <th>Tác vụ</th>
+          </tr>
+        </thead>
+        <tbody class="list-chapters">
+          <%= render "admin/courses/list_chapters" %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="modal-create-chapter" class="modal fade" role="dialog"></div>

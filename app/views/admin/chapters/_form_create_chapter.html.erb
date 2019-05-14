@@ -1,0 +1,12 @@
+<%= form_for [:admin, @chapter], remote: true do |f| %>
+	<div class="form-group">
+		<%= f.hidden_field :course_id, value: @course.id %>
+    <%= f.label :course_id, "Khóa học" %>
+    <%= f.select :course_id, options_for_select(@course_options, @course.id), {}, class: "form-control select-course" %>
+  </div>
+	<div class="form-group">
+    <%= f.label :name, "Tên chương" %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <center><%= f.submit "Tạo mới", class: "btn btn-primary mb-3" %>
+<% end %>
