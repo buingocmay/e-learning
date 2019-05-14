@@ -1,0 +1,11 @@
+<% @chapter.lessons.each_with_index do |lesson, index| %>
+  <tr data-expanded="true">
+    <td><%= index+1 %></td>
+    <td>
+    	<%= lesson.name %>	
+  	</td>
+    <td>
+			Sửa | Xóa
+    </td>
+  </tr>
+<% end %>
