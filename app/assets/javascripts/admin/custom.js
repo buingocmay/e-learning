@@ -57,3 +57,14 @@ $(document).on('click', '#edit-course', function() {
     }
   });
 });
+
+$(document).on('click', '#new-chapter', function() {
+  $.ajax({
+    url: $(this).data('url'),
+    type: 'GET',
+    dataType: 'script',
+    data: {
+      course_id: $(this).data('courseId')
+    }
+  });
+});

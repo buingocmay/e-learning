@@ -1,6 +1,6 @@
 class Admin::CoursesController < Admin::AdminController
 	before_action :find_unit, only: %i(new create edit update)
-	before_action :find_course, only: %i(edit update destroy)
+	before_action :find_course, only: %i(show edit update destroy)
 
 	def show
 
