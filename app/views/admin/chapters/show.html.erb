@@ -1,1 +1,26 @@
 <% provide :title, "Chapter" %>
+
+<div class="table-agile-info">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <%= @chapter.name %>
+    </div><br>
+    <hr>
+
+    <%= link_to "Thêm mới bài học", new_admin_lesson_path, class: "btn btn-info btn-sm" %>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th data-breakpoints="xs">#</th>
+            <th>Tên bài học</th>
+            <th>Tác vụ</th>
+          </tr>
+        </thead>
+        <tbody class="list-chapters">
+          <%= render "admin/chapters/list_lessons" %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

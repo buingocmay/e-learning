@@ -1,6 +1,6 @@
 class Admin::ChaptersController < Admin::AdminController
 	before_action :find_course, only: %i(new create edit update)
-	before_action :find_chapter, only: %i(edit update destroy)
+	before_action :find_chapter, only: %i(show edit update destroy)
 
 	def show
 		
@@ -58,7 +58,7 @@ class Admin::ChaptersController < Admin::AdminController
 
 		return if @chapter
   	redirect_to admin_categories_path
-  	flash[:danger] = "Không tìm thấy khóa học này"
+  	flash[:danger] = "Không tìm thấy chương này"
 	end
 
 	def chapter_params
