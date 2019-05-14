@@ -9,7 +9,8 @@ $(document).ready(function(){
 	});
 
 	$('.autohide').delay(2000).slideUp('slow');
-
+  
+  CKEDITOR.config.height = 500;
 });
 
 $(document).on('click', '#edit-category', function() {

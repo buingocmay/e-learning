@@ -2,7 +2,7 @@
   <tr data-expanded="true">
     <td><%= index+1 %></td>
     <td>
-    	<%= lesson.name %>	
+    	<%= link_to lesson.name, admin_chapter_lesson_path(@chapter, lesson) %>	
   	</td>
     <td>
 			Sửa | Xóa

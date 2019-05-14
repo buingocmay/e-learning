@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   		resources :units
   	end
     resources :courses
-    resources :chapters
-    resources :lessons
-
+    resources :chapters do
+      resources :lessons
+    end
   	root "static_pages#home"
   end
 

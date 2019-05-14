@@ -27,4 +27,5 @@
 //= require activestorage
 //= require turbolinks
 //= require cable
+//= require ckeditor/init
 //= require_tree .
