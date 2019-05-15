@@ -24,7 +24,7 @@
 //= require ../admin/custom
 //= require ../admin/chapter
 //= require cocoon
-//= require home
+//= require toastr.min
 
 //= require rails-ujs
 //= require activestorage
@@ -32,3 +32,6 @@
 //= require cable
 //= require ckeditor/init
 //= require_tree .
+function notify(type, text) {
+  toastr[type](text, {timeOut: 5000});
+}

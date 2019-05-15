@@ -1,4 +1,5 @@
 <%= form_for [:admin, :category, @unit], remote: true do |f| %>
+	<%= render "shared/error_messages", object: f.object %>
 	<div class="form-group">
     <%= f.label :category_id, "Danh mục đào tạo" %>
     <%= f.select :category_id, options_for_select(@category_options, @category.id), {},class: "form-control" %>

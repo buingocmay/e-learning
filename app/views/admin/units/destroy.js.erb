@@ -1,4 +1,7 @@
-$('.list-categories').html('<%= j render "admin/categories/list_categories",\
-  categories: @categories %>');
-$('.flash-errors').html('<%= j render "admin/layouts/flash_errors" %>');
-$('.autohide').delay(2000).slideUp('slow');
+<% if @notify[:success] %>
+	notify('success', '<%=  @notify[:message] %>');
+	$('.list-categories').html('<%= j render "admin/categories/list_categories",\
+  	categories: @categories %>');
+<% else %>
+	notify('error', '<%= @notify[:message] %>');
+<% end %>

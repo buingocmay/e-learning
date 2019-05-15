@@ -14,6 +14,7 @@
  *= require skdslider
  *= require font-awesome
  *= require style
+ *= require custom 
+ *= require toastr.min
  *= require_self
- *= require custom
  */

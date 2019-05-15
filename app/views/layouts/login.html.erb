@@ -5,21 +5,16 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag "application", media: "all" %>
-    <%= javascript_include_tag "application" %>
-  </head>
+    <%= javascript_include_tag "application" %>  </head>
 
   <body>
     <div class="">
-      <div class="flash-errors">
-        <% flash.each do |message_type, message| %>
-          <div class="autohide alert alert-<%= message_type.gsub('alert', 'warning') %>
-            text-center">
-            <%= message.try(:html_safe) %>
-          </div>
-        <% end %>
-      </div>
       <%= yield %>
     </div>
     
   </body>
 </html>
+
+ <script>
+   <%= sanitize custom_bootstrap_flash %>
+ </script>

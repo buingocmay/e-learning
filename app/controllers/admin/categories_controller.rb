@@ -6,7 +6,6 @@ class Admin::CategoriesController < Admin::AdminController
   end
 
   def new
-    binding.pry
   	@category = Category.new
   end
 
@@ -14,10 +13,10 @@ class Admin::CategoriesController < Admin::AdminController
   	@category = Category.new category_params
 
   	if @category.save
-  		flash[:success] = "Tạo mới thành công"
       @categories=Category.all
+      create_success
   	else
-  		flash[:danger] = "Tạo thất bại"
+  		create_fail
   	end
   end
 
@@ -26,9 +25,10 @@ class Admin::CategoriesController < Admin::AdminController
 
   def update
   	if @category.update category_params
-  		flash[:success] = "Cập nhật thành công"
       @categories=Category.all
+      update_success
     else
+      update_fail
       render :edit
     end
   end
@@ -36,13 +36,36 @@ class Admin::CategoriesController < Admin::AdminController
   def destroy
     if @category.destroy
       @categories = Category.all
-      flash[:success] = "Xóa thành công"
+      destroy_success
     else
-      flash[:danger] = "Xóa thất bại"
+      destroy_fail
     end
   end
 
   private
+
+  %i(fail success).each do |type|
+    define_method "create_#{type}" do
+      @notify = {
+        success: type == :success,
+        message: type == :success ? "Tạo thành công" : "Tạo thất bại",
+      }
+    end
+
+    define_method "update_#{type}" do
+      @notify = {
+        success: type == :success,
+        message: type == :success ? "Cập nhật thành công" : "Cập nhật thất bại",
+      }
+    end
+
+    define_method "destroy_#{type}" do
+      @notify = {
+        success: type == :success,
+        message: type == :success ? "Xóa thành công" : "Xóa thất bại",
+      }
+    end
+  end
 
   def find_category
   	@category = Category.find_by id: params[:id]

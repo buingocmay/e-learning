@@ -1,5 +1,9 @@
-<% if @categories %>
+<% if @notify[:success] %>
+	notify('success', '<%=  @notify[:message] %>');
 	$('#modal-create-category').modal('hide');
 	$('.list-categories').html('<%= j render "admin/categories/list_categories",\
-	  categories: @categories %>')
+	  categories: @categories %>');
+<% else %>
+	notify('error', '<%= @notify[:message] %>');
+	$('#modal-create-category').modal('hide');
 <% end %>

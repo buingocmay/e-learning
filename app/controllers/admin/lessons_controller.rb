@@ -2,9 +2,7 @@ class Admin::LessonsController < Admin::AdminController
 	before_action :find_chapter, only: %i(show new create)
 	before_action :find_lesson, only: %i(show)
 
-	def show
-		
-	end
+	def show; end
 
 	def new
 		@lesson = Lesson.new

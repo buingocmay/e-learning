@@ -1,3 +1,8 @@
-$('#modal-create-chapter').modal('hide');
-$('.list-chapters').html('<%= j render "admin/courses/list_chapters",\
-  course: @course %>')
+<% if @notify[:success] %>
+	notify('success', '<%=  @notify[:message] %>');
+	$('#modal-create-chapter').modal('hide');
+	$('.list-chapters').html('<%= j render "admin/courses/list_chapters",\
+	  course: @course %>')
+<% else %>
+	notify('error', '<%= @notify[:message] %>');
+<% end %>

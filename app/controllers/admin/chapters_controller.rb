@@ -15,9 +15,10 @@ class Admin::ChaptersController < Admin::AdminController
 		@chapter = Chapter.new chapter_params
 		
 		if @chapter.save
-			flash[:success] = "Tạo thành công"
+			create_success
   	else
-  		flash[:danger] = "Tạo thất bại"
+  		create_fail
+      render :new
   	end
 	end
 
@@ -27,8 +28,9 @@ class Admin::ChaptersController < Admin::AdminController
 
 	def update
 		if @chapter.update chapter_params
-  		flash[:success] = "Cập nhật thành công"
+  		update_success
     else
+      update_fail
       render :edit
     end
 	end
@@ -37,13 +39,36 @@ class Admin::ChaptersController < Admin::AdminController
 		@course = @chapter.course
 
     if @chapter.destroy
-      flash[:success] = "Xóa thành công"
+      destroy_success
     else
-      flash[:danger] = "Xóa thất bại"
+      destroy_fail
     end
 	end
 
 	private
+
+	%i(fail success).each do |type|
+    define_method "create_#{type}" do
+      @notify = {
+        success: type == :success,
+        message: type == :success ? "Tạo thành công" : "Tạo thất bại",
+      }
+    end
+
+    define_method "update_#{type}" do
+      @notify = {
+        success: type == :success,
+        message: type == :success ? "Cập nhật thành công" : "Cập nhật thất bại",
+      }
+    end
+
+    define_method "destroy_#{type}" do
+      @notify = {
+        success: type == :success,
+        message: type == :success ? "Xóa thành công" : "Xóa thất bại",
+      }
+    end
+  end
 
 	def find_course
 		@course = Course.find_by id: (params[:course_id] || params[:chapter][:course_id])

@@ -1,3 +1,8 @@
-$('#modal-create-course').modal('hide');
-$('.list-courses').html('<%= j render "admin/units/list_courses",\
-  unit: @unit %>')
+<% if @notify[:success] %>
+	notify('success', '<%=  @notify[:message] %>');
+	$('#modal-create-course').modal('hide');
+	$('.list-courses').html('<%= j render "admin/units/list_courses",\
+  	unit: @unit %>');
+<% else %>
+	notify('error', '<%= @notify[:message] %>');
+<% end %>

@@ -1,3 +1,8 @@
-$('#modal-create-question').modal('hide');
-$('.list-questions').html('<%= j render "admin/chapters/list_questions",\
-  chapter: @chapter %>')
+<% if @notify[:success] %>
+	notify('success', '<%=  @notify[:message] %>');
+	$('#modal-create-question').modal('hide');
+	$('.list-questions').html('<%= j render "admin/chapters/list_questions",\
+	  chapter: @chapter %>');
+<% else %>
+	notify('error', '<%= @notify[:message] %>');
+<% end %>
