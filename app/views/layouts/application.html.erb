@@ -21,16 +21,12 @@
   <body>
     <div class="">
       <%= render "layouts/header" %>
-      <div class="flash-errors">
-        <% flash.each do |message_type, message| %>
-          <div class="autohide alert alert-<%= message_type.gsub('alert', 'warning') %>
-            text-center">
-            <%= message.try(:html_safe) %>
-          </div>
-        <% end %>
-      </div>
       <%= yield %>
       <%= render "layouts/footer" %>
     </div>
   </body>
 </html>
+
+ <script>
+   <%= sanitize custom_bootstrap_flash %>
+ </script>

@@ -2,9 +2,7 @@ class Admin::UnitsController < Admin::AdminController
 	before_action :find_category, only: %i(new create edit update destroy)
 	before_action :find_unit, only: %i(show edit update destroy)
 
-	def show
-			
-	end
+	def show; end
 
   def new
   	@unit = Unit.new
@@ -15,10 +13,11 @@ class Admin::UnitsController < Admin::AdminController
 		@unit = Unit.new unit_params
 
   	if @unit.save
-  		flash[:success] = "Tạo thành công"
       @categories=Category.all
+      create_success
   	else
-  		flash[:danger] = "Tạo thất bại"
+  		create_fail
+      render :new
   	end
   end
 
@@ -28,9 +27,10 @@ class Admin::UnitsController < Admin::AdminController
 
   def update
   	if @unit.update unit_params
-  		flash[:success] = "Cập nhật thành công"
       @categories=Category.all
+      update_success
     else
+      update_fail
       render :edit
     end
   end
@@ -38,13 +38,36 @@ class Admin::UnitsController < Admin::AdminController
   def destroy
     if @unit.destroy
       @categories = Category.all
-      flash[:success] = "Xóa thành công"
+      destroy_success
     else
-      flash[:danger] = "Xóa thất bại"
+      destroy_fail
     end
   end
 
   private
+
+  %i(fail success).each do |type|
+    define_method "create_#{type}" do
+      @notify = {
+        success: type == :success,
+        message: type == :success ? "Tạo thành công" : "Tạo thất bại",
+      }
+    end
+
+    define_method "update_#{type}" do
+      @notify = {
+        success: type == :success,
+        message: type == :success ? "Cập nhật thành công" : "Cập nhật thất bại",
+      }
+    end
+
+    define_method "destroy_#{type}" do
+      @notify = {
+        success: type == :success,
+        message: type == :success ? "Xóa thành công" : "Xóa thất bại",
+      }
+    end
+  end
 
   def find_unit
   	@unit = Unit.find_by id: params[:id]

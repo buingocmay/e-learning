@@ -20,4 +20,5 @@
 //= require activestorage
 //= require turbolinks
 //= require cable
+//= require toastr.min
 //= require home

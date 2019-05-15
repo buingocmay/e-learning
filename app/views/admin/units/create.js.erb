@@ -1,3 +1,8 @@
-$('#modal-create-unit').modal('hide');
-$('.list-categories').html('<%= j render "admin/categories/list_categories",\
-  categories: @categories %>')
+<% if @notify[:success] %>
+	notify('success', '<%=  @notify[:message] %>');
+	$('#modal-create-unit').modal('hide');
+	$('.list-categories').html('<%= j render "admin/categories/list_categories",\
+  	categories: @categories %>');
+<% else %>
+	notify('error', '<%= @notify[:message] %>');
+<% end %>

@@ -2,7 +2,15 @@
   <tr data-expanded="true">
     <td><%= index+1 %></td>
     <td><%= question.content %></td>
-    <td><%= "Các đáp án" %></td>
+    <td>
+    	<% question.choices.each_with_index do |choice, index| %>
+    		<%= index+1 %>. <%= choice.content %>
+    		<% if choice.is_correct %>
+    			<i class="fa fa-check-square-o"></i>
+    		<% end %>
+    		<br>
+    	<% end %>
+    </td>
     <td>
 			Sửa | Xóa
     </td>

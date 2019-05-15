@@ -10,13 +10,37 @@ class Admin::QuestionsController < Admin::AdminController
 		@question = Question.new question_params
 
 		if @question.save
-			flash[:success] = "Tạo thành công"
+			create_success
   	else
-  		flash[:danger] = "Tạo thất bại"
+  		create_fail
+      render :new
   	end
 	end
 
 	private
+
+	%i(fail success).each do |type|
+    define_method "create_#{type}" do
+      @notify = {
+        success: type == :success,
+        message: type == :success ? "Tạo thành công" : "Tạo thất bại",
+      }
+    end
+
+    define_method "update_#{type}" do
+      @notify = {
+        success: type == :success,
+        message: type == :success ? "Cập nhật thành công" : "Cập nhật thất bại",
+      }
+    end
+
+    define_method "destroy_#{type}" do
+      @notify = {
+        success: type == :success,
+        message: type == :success ? "Xóa thành công" : "Xóa thất bại",
+      }
+    end
+  end
 
 	def find_chapter
 		@chapter = Chapter.find_by id: params[:chapter_id]
