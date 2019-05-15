@@ -6,54 +6,68 @@
       <%= @chapter.name %>
     </div><br>
 
-    <ul class="nav nav-tabs" role="tablist">
-      <li class="active" id="tab-lessons"><a href="#">Bài học</a></li>
-      <li id="tab-questions"><a href="#">Câu hỏi</a></li>
+    <ul class="nav nav-tabs bar_tabs" role="tablist">
+      <li>
+        <%= link_to "Bài học", "#lessons", data: {toggle: "tab"} %>
+      </li>
+      <li>
+        <%= link_to "Câu hỏi", "#questions", data: {toggle: "tab"} %>
+      </li>
     </ul>
     <br>
-    <div id = "div-lessons">
-      <%= link_to "Thêm mới bài học", new_admin_chapter_lesson_path(@chapter), class: "btn btn-info btn-sm" %>
-      <div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th data-breakpoints="xs">#</th>
-              <th>Tên bài học</th>
-              <th>Tác vụ</th>
-            </tr>
-          </thead>
-          <tbody class="list-lessons">
-            <%= render "admin/chapters/list_lessons" %>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div id = "div-questions">
-      <%= link_to "#", remote: true, class: "btn btn-info btn-sm",
-        data: {
-          toggle: "modal",
-          url: new_admin_chapter_question_path(@chapter),
-          target: "#modal-create-question"
-        }, id: "new-question" do %>
-        Thêm mới câu hỏi
-      <% end %>
-      <div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th data-breakpoints="xs">#</th>
-              <th data-breakpoints="sm">Nội dung câu hỏi</th>
-              <th>Các lực chọn</th>
-              <th>Tác vụ</th>
-            </tr>
-          </thead>
-          <tbody class="list-questions">
-            <%= render "admin/chapters/list_questions" %>
-          </tbody>
-        </table>
+
+    <div class="tab-content">
+      <div class="tab-pane fade in" id="lessons">
+        <%= link_to "Thêm mới bài học", new_admin_chapter_lesson_path(@chapter), class: "btn btn-info btn-sm" %>
+        <div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th data-breakpoints="xs">#</th>
+                <th>Tên bài học</th>
+                <th>Tác vụ</th>
+              </tr>
+            </thead>
+            <tbody class="list-lessons">
+              <%= render "admin/chapters/list_lessons" %>
+            </tbody>
+          </table>
+        </div>
+     </div>
+
+     <div class="tab-pane fade in" id="questions">
+        <%= link_to "#", remote: true, class: "btn btn-info btn-sm",
+          data: {
+            toggle: "modal",
+            url: new_admin_chapter_question_path(@chapter),
+            target: "#modal-create-question"
+          }, id: "new-question" do %>
+          Thêm mới câu hỏi
+        <% end %>
+        <div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th data-breakpoints="xs">#</th>
+                <th data-breakpoints="sm">Nội dung câu hỏi</th>
+                <th>Các lực chọn</th>
+                <th>Tác vụ</th>
+              </tr>
+            </thead>
+            <tbody class="list-questions">
+              <%= render "admin/chapters/list_questions" %>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <div id="modal-create-question" class="modal fade" role="dialog"></div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.nav-tabs a[href="#lessons"]').tab('show');
+  });
+</script>

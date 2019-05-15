@@ -22,6 +22,9 @@
 //= require ../admin/jquery.scrollTo
 //= require ../admin/monthly
 //= require ../admin/custom
+//= require ../admin/chapter
+//= require cocoon
+//= require home
 
 //= require rails-ujs
 //= require activestorage
