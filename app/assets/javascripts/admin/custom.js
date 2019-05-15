@@ -1,36 +1,28 @@
 $(document).ready(function(){
   jQuery.noConflict();
-	var url = window.location.pathname;
-	var urlRegExp = new RegExp(url.replace(/\/$/, '') + "$");
-	$('#sidebar a').each(function(){
-		if(urlRegExp.test(this.href.replace(/\/$/, ''))){
-			$(this).addClass('active');
-		}
-	});
 
-  $('#div-questions').hide();
+	showMenuBar();
+
+  activaTab('lessons');
 
 	$('.autohide').delay(2000).slideUp('slow');
   
   CKEDITOR.config.height = 500;
 });
 
-$(document).on('click', '#tab-questions', function(e) {
-  e.preventDefault();
-  $('#tab-lessons').removeClass('active');
-  $(this).addClass('active');
-  $('#div-questions').show();
-  $('#div-lessons').hide();
-});
+function activaTab(tab){
+  $('.nav-tabs a[href="#' + tab + '"]').tab('show');
+};
 
-$(document).on('click', '#tab-lessons', function(e) {
-  e.preventDefault();
-  $('#tab-questions').removeClass('active');
-  $(this).addClass('active');
-  $('#div-lessons').show();
-  $('#div-questions').hide();
-
-});
+function showMenuBar(){
+  var url = window.location.pathname;
+  var urlRegExp = new RegExp(url.replace(/\/$/, '') + "$");
+  $('#sidebar a').each(function(){
+    if(urlRegExp.test(this.href.replace(/\/$/, ''))){
+      $(this).addClass('active');
+    }
+  });
+}
 
 $(document).on('click', '#edit-category', function() {
   $.ajax({
