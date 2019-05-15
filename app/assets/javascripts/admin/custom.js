@@ -8,9 +8,28 @@ $(document).ready(function(){
 		}
 	});
 
+  $('#div-questions').hide();
+
 	$('.autohide').delay(2000).slideUp('slow');
   
   CKEDITOR.config.height = 500;
+});
+
+$(document).on('click', '#tab-questions', function(e) {
+  e.preventDefault();
+  $('#tab-lessons').removeClass('active');
+  $(this).addClass('active');
+  $('#div-questions').show();
+  $('#div-lessons').hide();
+});
+
+$(document).on('click', '#tab-lessons', function(e) {
+  e.preventDefault();
+  $('#tab-questions').removeClass('active');
+  $(this).addClass('active');
+  $('#div-lessons').show();
+  $('#div-questions').hide();
+
 });
 
 $(document).on('click', '#edit-category', function() {
@@ -77,6 +96,16 @@ $(document).on('click', '#edit-chapter', function() {
     dataType: 'script',
     data: {
       course_id: $(this).data('courseId')
+    }
+  });
+});
+
+$(document).on('click', '#new-question', function() {
+  $.ajax({
+    url: $(this).data('url'),
+    type: 'GET',
+    dataType: 'script',
+    data: {
     }
   });
 });

@@ -19,6 +19,7 @@ gem "bootstrap-sass", "~> 3.3.7"
 gem "mini_magick"
 gem "carrierwave"
 gem "ckeditor", "4.1.3"
+gem "cocoon"
 
 group :development, :test do
   gem "hirb"
