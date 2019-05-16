@@ -62,7 +62,7 @@
                   <div class="multi-gd-img">
                     <ul class="multi-column-dropdown">
                       <% category.units.each do |unit| %>
-                        <li><%= link_to unit.name, "#" %></li><hr>
+                        <li><%= link_to unit.name, unit_path(unit) %></li><hr>
                       <% end %>
                     </ul>
                   </div>  

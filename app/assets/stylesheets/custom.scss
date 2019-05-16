@@ -13,3 +13,31 @@
 .alert-notice hr {
   border-top-color: #c9e2b3;
 }
+
+.snipcart-thumb img {
+	height: 170px;
+}
+
+.button-register {
+	font-size: 14px;
+  color: #fff;
+  background: #3399cc;
+  text-decoration: none;
+  position: relative;
+  border: none;
+  border-radius: 0;
+  width: 100%;
+  text-transform: uppercase;
+  padding: .5em 0;
+  outline: none;
+  padding: 10px 30px;
+}
+
+.button-register:hover{
+	background: #fe9126;
+}
+
+a:hover {
+	color: white !important;
+	text-decoration: none;
+}

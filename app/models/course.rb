@@ -2,6 +2,7 @@ class Course < ApplicationRecord
 	belongs_to :unit
 	has_many :chapters
 	has_many :lessons, through: :chapters
+	has_many :user_courses
 
 	validates :name, presence: true
 
