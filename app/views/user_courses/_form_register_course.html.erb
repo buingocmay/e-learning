@@ -1,0 +1,9 @@
+<%= form_for @user_course, remote: true do |f| %>
+	<fieldset>
+		<%= f.hidden_field :user_id, value: current_user.id %>
+		<%= f.hidden_field :course_id, value: @course.id %>
+		<%= f.hidden_field :status, value: "waiting" %>
+		<br>
+		<center><%= f.submit "Đăng ký", class: "btn btn-primary mb-3" %>
+	</fieldset>
+<% end %>

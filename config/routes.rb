@@ -14,5 +14,7 @@ Rails.application.routes.draw do
   	root "static_pages#home"
   end
 
+  resources :units
+  resources :user_courses
   root "static_pages#home"
 end

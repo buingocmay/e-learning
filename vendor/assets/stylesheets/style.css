@@ -402,10 +402,10 @@ ul.multi-column-dropdown h6 {
     padding: .5em 0;
     outline: none;
 }
-.agile_top_brand_left_grid:hover .snipcart-details input.button,.snipcart-details input.button:hover{
+.agile_top_brand_left_grid:hover .snipcart-details .button-register, .snipcart-details .button-register:hover{
     background: #fe9126;
 }
-.product_list_header input.button {
+.product_list_header .button-register {
     color: #fff;
     font-size: 14px;
     outline: none;

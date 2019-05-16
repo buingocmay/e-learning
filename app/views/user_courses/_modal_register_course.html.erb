@@ -1,0 +1,15 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Đăng ký khóa học <%= @course.name %></h4>
+    </div>
+    <div class="modal-body">
+      <center><h4>Sau khi bạn đăng ký, quản trị viên sẽ xem xét và phê duyệt yêu cầu của bạn.</h4></center>
+      <%= render "user_courses/form_register_course" %>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
