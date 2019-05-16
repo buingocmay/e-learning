@@ -1,0 +1,16 @@
+<%= form_for [:admin, @user_course], remote: true do |f| %>
+  <label>Tên người dùng: <strong><%= @user_course.user.name %></strong></label>
+  <br>
+  <label>Email người dùng: <strong><%= @user_course.user.email %></strong></label>
+  <br>
+  <label>Khóa học: <strong><%= @user_course.course.name %></strong></label>
+  <br>
+  <br>
+	<div class="form-group">
+    <%= f.radio_button :status, "registered" %>
+    <%= label :status_registered, 'Chấp nhận' %>
+    <%= f.radio_button :status, "canceled" %>
+    <%= label :status_canceled, 'Từ chối' %>
+  </div>
+  <center><%= f.submit "Gửi đi", class: "btn btn-primary mb-3" %>
+<% end %>

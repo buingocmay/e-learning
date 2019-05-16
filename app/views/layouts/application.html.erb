@@ -21,6 +21,7 @@
   <body>
     <div class="">
       <%= render "layouts/header" %>
+      <%= render partial: "admin/layouts/flash_messages", flash: flash %>
       <%= yield %>
       <%= render "layouts/footer" %>
     </div>

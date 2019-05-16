@@ -5,7 +5,10 @@
     	<%= link_to lesson.name, admin_chapter_lesson_path(@chapter, lesson) %>	
   	</td>
     <td>
-			Sửa | Xóa
+    	<%= link_to "Sửa", edit_admin_chapter_lesson_path(@chapter, lesson) %> | 
+      <%= link_to admin_chapter_lesson_path(@chapter, lesson), method: :delete, remote: true, data: {confirm: "Xóa?"} do %>
+        Xóa
+      <% end %>
     </td>
   </tr>
 <% end %>

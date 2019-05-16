@@ -37,7 +37,29 @@
 	background: #fe9126;
 }
 
-a:hover {
+.top_brand_home_details a:hover {
 	color: white !important;
 	text-decoration: none;
+}
+
+.typo-agile {
+  background: #eef9f0;
+  padding: 2em;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+.w3ls_head {
+  font-size: 30px;
+  color: #000000;
+  margin-bottom: 2em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.content-lesson{
+  width:85%;
+  margin: 0 auto;
 }

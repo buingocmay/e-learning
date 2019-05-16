@@ -1,33 +1,26 @@
 <% provide :title, "Trang chủ" %>
-<div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+
+<div class="table-agile-info">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <%= "Danh sách nguời dùng đăng ký khóa học" %>
+    </div><br>
+    <hr>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th data-breakpoints="xs">#</th>
+            <th>Tên người dùng</th>
+            <th>Email người dùng</th>
+            <th>Khóa học</th>
+            <th>Trạng thái</th>
+          </tr>
+        </thead>
+        <tbody class="list-user-courses">
+          <%= render "admin/user_courses/list_user_courses" %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

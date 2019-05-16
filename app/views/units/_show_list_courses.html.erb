@@ -9,12 +9,22 @@
 					<figure>
 						<div class="snipcart-item block">
 							<div class="snipcart-thumb">
-								<a href="#"><%= image_tag ("course.png") %></a>		
+								<%= link_to course_path(course) do %>
+									<%= image_tag ("course.png") %>
+								<% end %>	
 								<h4><%= course.name %></h4>
 							</div>
 							<div class="snipcart-details top_brand_home_details">
-								<% if current_user.user_courses.find_by(course_id: course.id) %>
-									<input type="submit" name="submit" value="Chờ phê duyệt" class="button">
+								<% if !user_signed_in? %>
+									<%= link_to "Đăng ký", new_user_session_path, class: "button-register" %>
+								<% elsif this_user_course = current_user.user_courses.find_by(course_id: course.id) %>
+									<% if this_user_course.waiting? %>
+										<input type="submit" name="submit" value="Chờ phê duyệt" class="button">
+									<% elsif this_user_course.registered? %>
+										<input type="submit" name="submit" value="Đã đăng ký" class="button">
+									<% else %>
+										<input type="submit" name="submit" value="Đã bị hủy" class="button">
+									<% end %>
 								<% else %>
 									<%= link_to "#", remote: true, class: "button-register",
 							      data: {

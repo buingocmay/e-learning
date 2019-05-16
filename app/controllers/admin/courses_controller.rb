@@ -73,16 +73,16 @@ class Admin::CoursesController < Admin::AdminController
 		@unit = Unit.find_by id: (params[:unit_id] || params[:course][:unit_id])
 
 		return if @unit
-  	redirect_to admin_categories_path
   	flash[:danger] = "Không tìm thấy unit này"
+  	redirect_to admin_categories_path
 	end
 
 	def find_course
 		@course = Course.find_by id: params[:id]
 
 		return if @course
-  	redirect_to admin_categories_path
   	flash[:danger] = "Không tìm thấy khóa học này"
+  	redirect_to admin_categories_path
 	end
 
 	def course_params

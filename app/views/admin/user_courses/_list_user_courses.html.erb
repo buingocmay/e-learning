@@ -1,0 +1,23 @@
+<% @user_courses.each_with_index do |user_course, index| %>
+  <tr data-expanded="true">
+    <td><%= index+1 %></td>
+    <td>
+    	<%= user_course.user.name %>	
+  	</td>
+    <td><%= user_course.user.email %></td>
+    <td><%= user_course.course.name %></td>
+    <td>
+    	<%= user_course.status_detail %> |
+			<%= link_to "#", remote: true,
+				data: {
+					toggle: "modal",
+					url: edit_admin_user_course_path(user_course),
+					target: "#modal-edit-user-course",
+				}, id: "edit-user-course" do %>
+				Sửa
+			<% end %>
+    </td>
+  </tr>
+<% end %>
+
+<div id="modal-edit-user-course" class="modal fade" role="dialog"></div>
