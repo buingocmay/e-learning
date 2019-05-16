@@ -1,5 +1,6 @@
 class Admin::QuestionsController < Admin::AdminController
-	before_action :find_chapter, only: %i(new create)
+  before_action :find_chapter, only: %i(new create)
+	before_action :must_have_choice, only: %i(create)
 
 	def new
 		@question = Question.new
@@ -49,6 +50,12 @@ class Admin::QuestionsController < Admin::AdminController
   	redirect_to admin_categories_path
   	flash[:danger] = "Không tìm thấy bài học này"
 	end
+
+  def must_have_choice
+    return if params[:question][:choices_attributes]
+    flash[:danger] = "Câu hỏi phải có lựa chọn"
+    redirect_to admin_chapter_path(@chapter)
+  end
 
 	def question_params
 		params.require(:question).permit Question::QUESTION_ATTRS

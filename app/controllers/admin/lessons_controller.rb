@@ -11,12 +11,13 @@ class Admin::LessonsController < Admin::AdminController
 
 	def create
 		@lesson = Lesson.new lesson_params
-
+		@chapter_options = @chapter.course.chapters.map {|p| [p.name, p.id]}
 		if @lesson.save
 			flash[:success] = "Tạo thành công"
 			redirect_to admin_chapter_path(@chapter)
   	else
   		flash[:danger] = "Tạo thất bại"
+  		render :new
   	end
 	end
 
