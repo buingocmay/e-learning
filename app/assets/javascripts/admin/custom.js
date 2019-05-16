@@ -101,3 +101,23 @@ $(document).on('click', '#new-question', function() {
     }
   });
 });
+
+$(document).on('click', '#edit-user-course', function() {
+  $.ajax({
+    url: $(this).data('url'),
+    type: 'GET',
+    dataType: 'script',
+    data: {
+    }
+  });
+});
+
+$(document).on('click', '#edit-lesson', function() {
+  $.ajax({
+    url: $(this).data('url'),
+    type: 'GET',
+    dataType: 'script',
+    data: {
+    }
+  });
+});

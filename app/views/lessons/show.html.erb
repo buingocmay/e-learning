@@ -1,0 +1,43 @@
+<% provide :title, "Bài học" %>
+
+<div class="breadcrumbs">
+	<div class="container">
+		<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+			<li><%= link_to "Trang chủ", root_path %></li>
+			<li><%= @course.unit.category.name %></li>
+			<li><%= link_to @course.unit.name, unit_path(@course.unit) %></li>
+			<li><%= link_to @course.name, course_path(@course) %></li>
+			<li class="active"><%= @lesson.name %></li>
+		</ol>
+	</div>
+</div>
+
+<div class="products">
+	<div class="container">
+		<div class="col-md-4 products-left">
+			<div class="categories">
+				<h2>Danh sách bài học</h2>
+				<ul class="cate">
+					<% @course.lessons.each do |lesson| %>
+						<li>
+							<%= link_to course_lesson_path(@course, lesson) do %>
+								<i class="fa fa-arrow-right" aria-hidden="	true"></i>
+								<%= lesson.name %></a>
+							<% end %>
+						</li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+
+		<div class="col-md-8 products-right">
+			<div class="typo-agile">
+				<h2 class="w3ls_head"><%= @lesson.name %></h2>
+				<div class="agile content-lesson">
+					<%= sanitize @lesson.content %>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+</div>

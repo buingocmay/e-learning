@@ -4,5 +4,15 @@ class UserCourse < ApplicationRecord
 
 	USERCOURSE_ATTRS = [:user_id, :course_id, :status].freeze
 
-	enum status: [:waiting, :registered, :cancel]
+	enum status: [:waiting, :registered, :canceled]
+
+	def status_detail
+		if self.status == "waiting"
+			return "Chờ phê duyệt"
+		elsif self.status == "registered"
+			return "Đã đăng ký"
+		else
+			return "Đã hủy"
+		end
+	end
 end

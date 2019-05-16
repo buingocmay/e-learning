@@ -1,11 +1,12 @@
-<% provide :title, "Các khóa học" %>
+<% provide :title, "Khóa học" %>
 
 <div class="breadcrumbs">
 	<div class="container">
 		<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
 			<li><%= link_to "Trang chủ", root_path %></li>
-			<li><%= @unit.category.name %></li>
-			<li class="active"><%= @unit.name %></li>
+			<li><%= @course.unit.category.name %></li>
+			<li><%= link_to @course.unit.name, unit_path(@course.unit) %></li>
+			<li class="active"><%= @course.name %></li>
 		</ol>
 	</div>
 </div>
@@ -14,20 +15,22 @@
 	<div class="container">
 		<div class="col-md-4 products-left">
 			<div class="categories">
-				<h2>Các khóa học mới nhất</h2>
+				<h2>Danh sách bài học</h2>
 				<ul class="cate">
-					<% Course.all.each do |new_course| %>
-						<li><a href="#"><i class="fa fa-arrow-right" aria-hidden="	true"></i><%= new_course.name %></a></li>
+					<% @course.lessons.each do |lesson| %>
+						<li>
+							<%= link_to course_lesson_path(@course, lesson) do %>
+								<i class="fa fa-arrow-right" aria-hidden="	true"></i>
+								<%= lesson.name %></a>
+							<% end %>
+						</li>
 					<% end %>
 				</ul>
 			</div>
 		</div>
 
 		<div class="col-md-8 products-right show-list-courses">
-			<%= render "units/show_list_courses" %>
 		</div>
 		<div class="clearfix"> </div>
 	</div>
 </div>
-
-<div id="modal-register-course" class="modal fade" role="dialog"></div>

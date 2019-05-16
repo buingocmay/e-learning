@@ -1,0 +1,8 @@
+<% if @notify[:success] %>
+	notify('success', '<%=  @notify[:message] %>');
+	$('#modal-edit-user-course').modal('hide');
+	$('.list-user-courses').html('<%= j render "admin/user_courses/list_user_courses",\
+	  user_courses: @user_courses %>');
+<% else %>
+	notify('error', '<%= @notify[:message] %>');
+<% end %>
