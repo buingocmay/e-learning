@@ -12,10 +12,10 @@ class CoursesController < ApplicationController
 	def course_registered
 		user_course = @course.user_courses.find_by(user_id: current_user.id)
 		return if user_course && user_course.registered?
-		if user_course.waiting?
-			flash[:danger] = "Bạn chưa được phê duyệt vào khóa học này"
+		if user_course.nil? || user_course.cancel?
+			flash[:warning] = "Bạn chưa đăng ký khóa học này"
 		else 
-			flash[:danger] = "Bạn chưa đăng ký khóa học này"
+			flash[:warning] = "Bạn chưa được phê duyệt vào khóa học này"			
 		end
 		redirect_to root_path
 	end
@@ -23,7 +23,7 @@ class CoursesController < ApplicationController
 	def check_signed_in
 		return if user_signed_in?
 
-		flash[:danger] = "Bạn phải đăng nhập trước"
+		flash[:warning] = "Bạn phải đăng nhập trước"
 		redirect_to new_user_session_path
 	end
 
@@ -31,7 +31,7 @@ class CoursesController < ApplicationController
 		@course = Course.find_by id: params[:id]		
 
 		return if @course
-		flash[:danger] = "Không tìm thấy khóa học này"
+		flash[:warning] = "Không tìm thấy khóa học này"
 		redirect_to root_path
 	end
 end
