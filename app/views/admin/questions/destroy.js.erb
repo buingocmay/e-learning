@@ -1,0 +1,7 @@
+<% if @notify[:success] %>
+	notify('success', '<%=  @notify[:message] %>');
+	$('.list-questions').html('<%= j render "admin/chapters/list_questions",\
+  	chapter: @chapter %>');
+<% else %>
+	notify('error', '<%= @notify[:message] %>');
+<% end %>

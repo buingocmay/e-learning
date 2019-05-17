@@ -71,8 +71,8 @@ class Admin::CategoriesController < Admin::AdminController
   	@category = Category.find_by id: params[:id]
 
   	return if @category
-  	redirect_to admin_categories_path
   	flash[:danger] = "Có lỗi xảy ra"
+  	redirect_to admin_categories_path
   end
 
   def category_params

@@ -12,7 +12,10 @@
     	<% end %>
     </td>
     <td>
-			Sửa | Xóa
+			Sửa |
+      <%= link_to admin_chapter_question_path(@chapter, question), method: :delete,remote: true, data: {confirm: "Xóa?"} do %>
+        Xóa
+      <% end %>
     </td>
   </tr>
 <% end %>

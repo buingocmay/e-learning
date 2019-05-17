@@ -74,7 +74,7 @@ class Admin::UnitsController < Admin::AdminController
 
   	return if @unit
   	redirect_to admin_categories_path
-  	flash[:danger] = "Không tìm thấy danh mục này"
+  	flash[:error] = "Không tìm thấy unit này"
 	end
 
   def find_category
@@ -82,7 +82,7 @@ class Admin::UnitsController < Admin::AdminController
 
   	return if @category
   	redirect_to admin_categories_path
-  	flash[:danger] = "Không tìm thấy danh mục này"
+  	flash[:error] = "Không tìm thấy danh mục này"
   end
 
   def unit_params
