@@ -1,0 +1,35 @@
+<%= form_for [:admin, @exam_structure], remote: true do |f| %>
+	<div class="form-group">
+		<%= f.hidden_field :course_id, value: @course.id %>
+    <%= f.label :course_id, "Khóa học" %>
+    <%= f.select :course_id, options_for_select(@course_options, @course.id), {}, class: "form-control select-course" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, "Tên bài kiểm tra" %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="form-horizontal">
+    <div class="form-group">
+      <%= f.label :total_questions, "Số câu hỏi", class: "col-lg-3 control-label" %>
+      <div class="col-lg-3">
+        <%= f.number_field :total_questions, class: "form-control" %>
+      </div>
+      <%= f.label :time, "Thời gian (phút)", class: "col-lg-3 control-label" %>
+      <div class="col-lg-3">
+        <%= f.number_field :time, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+  <br>
+  <h4>Số câu hỏi mỗi chương:</h4><br>
+
+  <div id="exam_structure_details">
+    <%= f.fields_for :exam_structure_details do |exam_structure_detail| %>
+      <%= render "exam_structure_detail_fields", f: exam_structure_detail %>
+    <% end %>
+    <strong>
+      <%= link_to_add_association "Thêm mới", f, :exam_structure_details %>
+    </strong>
+  </div>
+  <center><%= f.submit "Tạo mới", class: "btn btn-primary mb-3" %>
+<% end %>

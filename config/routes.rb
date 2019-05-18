@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       resources :lessons
       resources :questions
     end
+    resources :exam_structures
   	root "static_pages#home"
   end
 
