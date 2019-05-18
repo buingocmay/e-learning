@@ -3,6 +3,7 @@ class Course < ApplicationRecord
 	has_many :chapters
 	has_many :lessons, through: :chapters
 	has_many :user_courses
+	has_many :exam_structures
 
 	validates :name, presence: true
 

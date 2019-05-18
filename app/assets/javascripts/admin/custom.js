@@ -121,3 +121,14 @@ $(document).on('click', '#edit-lesson', function() {
     }
   });
 });
+
+$(document).on('click', '#new-exam-structure', function() {
+  $.ajax({
+    url: $(this).data('url'),
+    type: 'GET',
+    dataType: 'script',
+    data: {
+      course_id: $(this).data('courseId')
+    }
+  });
+});

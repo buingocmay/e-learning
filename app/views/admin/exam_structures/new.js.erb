@@ -1,0 +1,5 @@
+$('#modal-create-exam-structure').html('<%= j render "admin/exam_structures/modal_create_exam_structure" %>');
+$('.select-course').prop('disabled',true);
+<% if @notify %>
+	notify('warning', '<%=  @notify %>');
+<% end %>

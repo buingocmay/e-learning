@@ -70,7 +70,7 @@ class Admin::QuestionsController < Admin::AdminController
   	flash[:warning] = "Không tìm thấy bài học này"
 	end
 
-  def must_have_choice
+  def must_choice_correct
     params[:question][:choices_attributes].each do |p|
       return if p[1][:is_correct] == "1"
     end
@@ -80,10 +80,12 @@ class Admin::QuestionsController < Admin::AdminController
     render :new
   end
 
-  def must_choice_correct
+  def must_have_choice
     return if params[:question][:choices_attributes]
-    flash[:warning] = "Câu hỏi phải có lựa chọn"
-    redirect_to admin_chapter_path(@chapter)
+    @question = Question.new question_params
+    @chapter_options = @chapter.course.chapters.map {|p| [p.name, p.id]}
+    @notify = "Chưa thêm đáp án!"
+    render :new
   end
 
 	def question_params

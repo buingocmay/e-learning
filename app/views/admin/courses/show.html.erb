@@ -6,34 +6,83 @@
       <%= @course.name %>
     </div><br>
 
-    <%= link_to "#", remote: true, class: "btn btn-info btn-sm",
-      data: {
-        toggle: "modal",
-        url: new_admin_chapter_path,
-        course_id: @course.id,
-        target: "#modal-create-chapter"
-      }, id: "new-chapter" do %>
-      Thêm mới chương
-    <% end %>
-    <hr>
-    <div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th data-breakpoints="xs">#</th>
-            <th>Tên chương</th>
-            <th>Số bài học</th>
-            <th data-breakpoints="xs">Số câu hỏi trong chương</th>
-            <th>Tác vụ</th>
-          </tr>
-        </thead>
-        <tbody class="list-chapters">
-          <%= render "admin/courses/list_chapters" %>
-        </tbody>
-      </table>
-    </div>
+    <ul class="nav nav-tabs bar_tabs" role="tablist">
+      <li>
+        <%= link_to "Các chương", "#chapters", data: {toggle: "tab"} %>
+      </li>
+      <li>
+        <%= link_to "Cấu trúc bài kiểm tra", "#exam_structures", data: {toggle: "tab"} %>
+      </li>
+    </ul>
+    <br>
+
+    <div class="tab-content">
+      <div class="tab-pane fade in" id="chapters">
+        <%= link_to "#", remote: true, class: "btn btn-info btn-sm",
+          data: {
+            toggle: "modal",
+            url: new_admin_chapter_path,
+            course_id: @course.id,
+            target: "#modal-create-chapter"
+          }, id: "new-chapter" do %>
+          Thêm mới chương
+        <% end %>
+        <div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th data-breakpoints="xs">#</th>
+                <th>Tên chương</th>
+                <th>Số bài học</th>
+                <th data-breakpoints="xs">Số câu hỏi trong chương</th>
+                <th>Tác vụ</th>
+              </tr>
+            </thead>
+            <tbody class="list-chapters">
+              <%= render "admin/courses/list_chapters" %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="tab-pane fade in" id="exam_structures">
+        <%= link_to "#", remote: true, class: "btn btn-info btn-sm",
+          data: {
+            toggle: "modal",
+            url: new_admin_exam_structure_path,
+            course_id: @course.id,
+            target: "#modal-create-exam-structure"
+          }, id: "new-exam-structure" do %>
+          Thêm mới bài kiểm tra
+        <% end %>
+        <div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th data-breakpoints="xs">#</th>
+                <th>Tên bài kiểm tra</th>
+                <th>Tổng số câu hỏi</th>
+                <th>Cấu trúc chi tiết</th>
+                <th>Thời gian làm bài (phút)</th>
+                <th>Tác vụ</th>
+              </tr>
+            </thead>
+            <tbody class="list-exam-structures">
+              <%= render "admin/courses/list_exam_structures" %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+   </div>
   </div>
 </div>
 
 <div id="modal-create-chapter" class="modal fade" role="dialog"></div>
 <div id="modal-edit-chapter" class="modal fade" role="dialog"></div>
+<div id="modal-create-exam-structure" class="modal fade" role="dialog"></div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.nav-tabs a[href="#chapters"]').tab('show');
+  });
+</script>

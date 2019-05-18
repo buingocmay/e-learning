@@ -1,0 +1,7 @@
+<% if @notify[:success] %>
+	notify('success', '<%=  @notify[:message] %>');
+	$('.list-exam-structures').html('<%= j render "admin/courses/list_exam_structures",\
+  	course: @course %>');
+<% else %>
+	notify('error', '<%= @notify[:message] %>');
+<% end %>

@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
 	def course_registered
 		user_course = @course.user_courses.find_by(user_id: current_user.id)
 		return if user_course && user_course.registered?
-		if user_course.nil? || user_course.cancel?
+		if user_course.nil? || user_course.canceled?
 			flash[:warning] = "Bạn chưa đăng ký khóa học này"
 		else 
 			flash[:warning] = "Bạn chưa được phê duyệt vào khóa học này"			
