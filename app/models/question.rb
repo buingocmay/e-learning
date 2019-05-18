@@ -1,6 +1,7 @@
 class Question < ApplicationRecord
 	belongs_to :chapter
 	has_many :choices
+	has_many :exam_questions
 
 	validates :content, presence: true
 
