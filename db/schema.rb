@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_17_143619) do
+ActiveRecord::Schema.define(version: 2019_05_18_102646) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -68,6 +68,14 @@ ActiveRecord::Schema.define(version: 2019_05_17_143619) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "exam_questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "question_id"
+    t.integer "user_exam_id"
+    t.integer "user_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "exam_structure_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "chapter_id"
     t.integer "number_questions"
@@ -112,6 +120,15 @@ ActiveRecord::Schema.define(version: 2019_05_17_143619) do
     t.integer "user_id"
     t.integer "course_id"
     t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_exams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "exam_structure_id"
+    t.integer "score"
+    t.integer "user_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

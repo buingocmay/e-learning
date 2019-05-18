@@ -20,6 +20,11 @@ Rails.application.routes.draw do
   resources :user_courses
   resources :courses do
     resources :lessons
+    resources :exam_structures
   end
+  resources :user_exams do
+    post :submit_exam
+  end
+
   root "static_pages#home"
 end

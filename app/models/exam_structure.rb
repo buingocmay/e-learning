@@ -1,6 +1,7 @@
 class ExamStructure < ApplicationRecord
 	belongs_to :course
 	has_many :exam_structure_details
+	has_many :user_exams
 
 	accepts_nested_attributes_for :exam_structure_details, allow_destroy: true,
     reject_if: :all_blank

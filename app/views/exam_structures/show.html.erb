@@ -1,4 +1,4 @@
-<% provide :title, "Bài học" %>
+<% provide :title, @exam_structure.name %>
 
 <div class="breadcrumbs">
 	<div class="container">
@@ -7,7 +7,7 @@
 			<li><%= @course.unit.category.name %></li>
 			<li><%= link_to @course.unit.name, unit_path(@course.unit) %></li>
 			<li><%= link_to @course.name, course_path(@course) %></li>
-			<li class="active"><%= @lesson.name %></li>
+			<li class="active"><%= @exam_structure.name %></li>
 		</ol>
 	</div>
 </div>
@@ -48,11 +48,32 @@
 
 		<div class="col-md-8 products-right">
 			<div class="typo-agile">
-				<h2 class="w3ls_head"><%= @lesson.name %></h2>
-				<div class="agile content-lesson">
-					<%= sanitize @lesson.content %>
+				<h2 class="w3ls_head"><%= @exam_structure.name %></h2>
+				<div class="w3agile_description">
+					<h4>Số câu hỏi: <%= @exam_structure.total_questions %> câu</h4>
+					<h4>Thời gian làm bài: <%= @exam_structure.time %> phút</h4>
+				</div>
+				<div>
+					<h3>Các lần làm bài:</h3><br>
+					<ul>
+						<% @exam_structure.user_exams.each_with_index do |exam, index| %>
+							<% unless exam.score.nil? %>
+								<li>
+									Lần <%= index+1 %>: <%= exam.score %> điểm
+									<%= link_to "Xem lại", user_exam_path(exam) %>
+								</li>
+							<% end %>
+						<% end %>
+					</ul>
 				</div>
 			</div>
+			<%= form_for (UserExam.new) do |f| %>
+				<div class="form-group">
+					<%= f.hidden_field :exam_structure_id, value: @exam_structure.id %>
+					<%= f.hidden_field :user_id, value: current_user.id %>
+			  </div>
+			  <center><%= f.submit "Làm bài", class: "btn btn-primary mb-3" %>
+			<% end %>
 		</div>
 		<div class="clearfix"> </div>
 	</div>

@@ -1,0 +1,58 @@
+<% provide :title, "Bài kiểm tra" %>
+
+<div class="products">
+	<div class="container">
+		<div class="typo-agile">
+			<h2 class="w3ls_head"><%= @user_exam.exam_structure.name %></h2>
+			<div class="agile content-lesson">
+				<% @user_exam.exam_questions.each_with_index do|exam_question, index| %>
+					<div class="w3agile_description">
+						<h3>Câu <%= index+1 %>. <%= exam_question.question.content %></h3>
+						<% exam_question.question.choices.each do |choice|%>
+							<div>
+								<lable class="<%= "correct-answer" if choice.is_correct %>">
+									<input type="radio" name="<%= exam_question.id %>" value="<%= choice.id %>" <%= "checked" if exam_question.user_answer == choice.id %> >
+									<%= choice.content %>
+								</lable><br>
+							</div>
+						<% end %>
+					</div>
+				<% end %>
+			</div>
+			<% if @user_exam.score.nil? %>
+				<center>
+					 <%= link_to "#", class: "btn btn-primary mb-3",
+	          data: {
+	            url: user_exam_submit_exam_path(@user_exam),
+	            user_exam_id: @user_exam.id
+	          }, id: "submit-exam" do %>
+	          Nộp bài
+	        <% end %>
+				</center>
+			<% end %>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+</div>
+<% if !@user_exam.score.nil? %>
+<script type="text/javascript">
+	$("input[type=radio]").attr('disabled', true);
+</script>
+<% end %>
+<script type="text/javascript">
+$(document).on('click', '#submit-exam', function() {
+  var arrAnswer = new Array();
+  $('input[type=radio]:checked').each(function(){
+  	arrAnswer.push([$(this)[0].name, $(this).val()]);
+  });
+
+  $.ajax({
+    url: $(this).data('url'),
+    type: 'POST',
+    dataType: 'script',
+    data: {
+    	arrAnswer: arrAnswer
+    }
+  });
+});
+</script>
