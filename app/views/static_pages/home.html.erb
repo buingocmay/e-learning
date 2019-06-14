@@ -1,22 +1,24 @@
 <% provide :title, "Trang chủ" %>
-<div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+<div class="">
+	<div class="newproducts-w3agile">
+		<div class="container">
+			<h3>Các khóa học mới nhất</h3>
+				<div class="agile_top_brands_grids list-new-courses">
+					<%= render "static_pages/list_new_courses" %>
+					<div class="clearfix"> </div>
+				</div>
+		</div>
+	</div>
+
+	<div class="newproducts-w3agile">
+		<div class="container">
+			<h3>Các khóa học hot nhất</h3>
+				<div class="agile_top_brands_grids list-most-registed-courses">
+					<%= render "static_pages/list_most_registed_courses" %>
+					<div class="clearfix"> </div>
+				</div>
+		</div>
+	</div>
 </div>
+
+<div id="modal-register-course" class="modal fade" role="dialog"></div>

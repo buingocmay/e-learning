@@ -5,5 +5,7 @@ class ApplicationController < ActionController::Base
 
 	def get_categories
     @categories = Category.all
+    @q = Course.ransack(params[:q])
+    @courses = @q.result
   end
 end

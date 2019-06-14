@@ -20,6 +20,8 @@ gem "mini_magick"
 gem "carrierwave"
 gem "ckeditor", "4.1.3"
 gem "cocoon"
+gem "jquery-countdown-rails"
+gem "ransack"
 
 group :development, :test do
   gem "hirb"

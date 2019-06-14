@@ -6,6 +6,8 @@ class UserCourse < ApplicationRecord
 
 	enum status: [:waiting, :registered, :canceled]
 
+	scope :order_registed, ->{order created_at: :desc}
+
 	def status_detail
 		if self.status == "waiting"
 			return "Chờ phê duyệt"

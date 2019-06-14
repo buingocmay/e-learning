@@ -5,11 +5,28 @@
     <div class="agile-login last">
       <ul>
         <% if user_signed_in? %>
-          <li><%= link_to current_user.name, "#" %></li>
-          <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+          <% if current_user.avatar? %>
+            <%= image_tag current_user.avatar.url, class: "avatar" %>
+          <% else %>
+            <%= image_tag "avatar-default.png", class: "avatar" %>
+          <% end %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %><b class="caret"></b></a>
+            <ul class="dropdown-menu multi-column columns-3">
+              <div class="row">
+                <div class="multi-gd-img">
+                  <ul class="multi-column-dropdown">
+                    <li><%= link_to "Tài khoản", "#" %></li>
+                    <li><%= link_to "Sửa thông tin", edit_user_registration_path %></li>
+                  </ul>
+                </div>  
+              </div>
+            </ul>
+          </li>\
+          <li><%= link_to "Đăng xuất", destroy_user_session_path, method: :delete %></li>
         <% else %>
-          <li><%= link_to "Sign up", new_user_registration_path %></li>
-          <li><%= link_to "Login", new_user_session_path %></li>
+          <li><%= link_to "Đăng ký", new_user_registration_path %></li>
+          <li><%= link_to "Đăng nhập", new_user_session_path %></li>
         <% end %>
       </ul>
     </div>
@@ -28,13 +45,12 @@
     <h1><%= link_to "eLearning", root_path %></h1>
   </div>
   <div class="w3l_search">
-    <form action="#" method="post">
-      <input type="search" name="Search" placeholder="Search for a course..." required="">
+    <%= search_form_for @q do |f| %>
+      <%= f.search_field :name_cont %>
       <button type="submit" class="btn btn-default search" aria-label="Left Align">
         <i class="fa fa-search" aria-hidden="true"> </i>
       </button>
-      <div class="clearfix"></div>
-    </form>
+    <% end %>
   </div>
   <div class="clearfix"> </div>
   </div>
@@ -53,7 +69,7 @@
       </div> 
       <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
         <ul class="nav navbar-nav">
-          <li class="active"><%= link_to "Home", root_path %></li>
+          <li class="active"><%= link_to "Trang chủ", root_path %></li>
           <% @categories.each do |category| %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= category.name %><b class="caret"></b></a>
@@ -70,8 +86,8 @@
               </ul>
             </li>
           <% end %>
-          <li><a href="/">About us</a></li>
-          <li><a href="/">Contact</a></li>
+          <li><a href="/">Giới thiệu</a></li>
+          <li><a href="/">Liên hệ</a></li>
         </ul>
       </div>
       </nav>

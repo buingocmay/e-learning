@@ -2,7 +2,7 @@
   <tr data-expanded="true">
     <td><%= index+1 %></td>
     <td>
-    	<%= link_to exam_structure.name, admin_exam_structure_path(exam_structure) %>
+    	<%= exam_structure.name %>
   	</td>
     <td><%= exam_structure.total_questions %></td>
     <td>
@@ -10,7 +10,7 @@
         <%= detail.chapter.name %>: <%= detail.number_questions %> câu<br> 
       <% end %>
     </td>
-    <td><%= exam_structure.time %></td>
+    <td><%= exam_structure.time/60 %></td>
     <td>
 			Sửa |
       <%= link_to admin_exam_structure_path(exam_structure), method: :delete, remote: true, data: {confirm: "Xóa?"} do %>

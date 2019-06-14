@@ -16,7 +16,7 @@
 			<div class="categories">
 				<h2>Các khóa học mới nhất</h2>
 				<ul class="cate">
-					<% Course.all.each do |new_course| %>
+					<% @new_courses.each do |new_course| %>
 						<li><a href="#"><i class="fa fa-arrow-right" aria-hidden="	true"></i><%= new_course.name %></a></li>
 					<% end %>
 				</ul>

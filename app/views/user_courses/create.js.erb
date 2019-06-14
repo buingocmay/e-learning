@@ -1,8 +1,16 @@
 <% if @notify[:success] %>
 	notify('success', '<%=  @notify[:message] %>');
 	$('#modal-register-course').modal('hide');
-	$('.show-list-courses').html('<%= j render "units/show_list_courses",\
-	  unit: @unit %>');
+	<% if @unit %>
+		$('.show-list-courses').html('<%= j render "units/show_list_courses",\
+	  	unit: @unit %>');
+	<% elsif @new_courses %>
+		$('.list-new-courses').html('<%= j render "static_pages/list_new_courses",\
+	  	new_courses: @new_courses %>');
+	<% else %>
+		$('.list-most-registed-courses').html('<%= j render "static_pages/list_most_registed_courses",\
+	  	most_registed_courses: @most_registed_courses %>');
+	<% end %>
 <% else %>
 	$('#modal-register-course').modal('hide');
 	notify('error', '<%= @notify[:message] %>');

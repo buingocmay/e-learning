@@ -13,7 +13,7 @@ class ExamStructuresController < ApplicationController
 
 		return if @course
 		flash[:danger] = "Không tìm thấy khóa học"
-		redirect_to root_path
+		redirect_back fallback_location: root_path
 	end
 
 	def find_exam_structure

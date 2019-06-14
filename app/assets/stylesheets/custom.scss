@@ -71,3 +71,30 @@ input[type="radio"] {
 .correct-answer {
   color: red;
 }
+
+.register p a{
+  color:#fe9126;
+  text-decoration:none;
+  font-size: 1.2em;
+  padding: 0 .5em;
+}
+.register p a:hover{
+  color:#212121;
+}
+
+.avatar-edit {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  object-fit: cover;
+  width:230px;
+  height:230px;
+}
+
+.avatar {
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  object-fit: cover;
+  width:40px;
+  height:40px;
+}

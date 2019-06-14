@@ -7,6 +7,9 @@ class CoursesController < ApplicationController
 		
 	end
 
+	def index
+	end
+
 	private
 
 	def course_registered
@@ -17,7 +20,7 @@ class CoursesController < ApplicationController
 		else 
 			flash[:warning] = "Bạn chưa được phê duyệt vào khóa học này"			
 		end
-		redirect_to root_path
+		redirect_back fallback_location: root_path
 	end
 
 	def check_signed_in
@@ -32,6 +35,6 @@ class CoursesController < ApplicationController
 
 		return if @course
 		flash[:warning] = "Không tìm thấy khóa học này"
-		redirect_to root_path
+		rredirect_back fallback_location: root_path
 	end
 end
