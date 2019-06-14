@@ -25,16 +25,21 @@ class UserExamsController < ApplicationController
 
 	def submit_exam
 		correct = 0
-		params[:arrAnswer].each do |user_answer|
-			exam_question = ExamQuestion.find_by id: user_answer[1][0].to_i
-			@user_exam = exam_question.user_exam
-			choice = Choice.find_by id: user_answer[1][1].to_i
-			exam_question.update user_answer: choice.id
-			correct += 1 if choice.is_correct
+		@user_exam = UserExam.find_by id: params[:user_exam_id]
+		if params[:arrAnswer] != nil
+			params[:arrAnswer].each do |user_answer|
+				exam_question = ExamQuestion.find_by id: user_answer[1][0].to_i
+				choice = Choice.find_by id: user_answer[1][1].to_i
+				exam_question.update user_answer: choice.id
+				correct += 1 if choice.is_correct
+			end
+			score = correct*100/(@user_exam.exam_questions.count).to_i
+		else
+			score = 0
 		end
-		score = correct*100/(@user_exam.exam_questions.count).to_i
 		
 		@user_exam.update score: score
+		flash[:success] = "Đã hoàn thành bài kiểm tra"
 		redirect_to course_exam_structure_path(@user_exam.exam_structure.course, @user_exam.exam_structure)
 	end
 

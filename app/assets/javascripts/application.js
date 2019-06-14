@@ -21,6 +21,7 @@
 //= require turbolinks
 //= require cable
 //= require toastr.min
+//= require jquery.countdown
 //= require home
 function notify(type, text) {
   toastr[type](text, {timeOut: 5000});

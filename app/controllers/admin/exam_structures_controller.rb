@@ -11,6 +11,7 @@ class Admin::ExamStructuresController < Admin::AdminController
 	end
 
 	def create
+		params[:exam_structure][:time] = (params[:exam_structure][:time].to_i)*60
 		@exam_structure = ExamStructure.new exam_structure_params
 
 		if @exam_structure.save

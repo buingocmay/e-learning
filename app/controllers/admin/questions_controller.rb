@@ -56,7 +56,7 @@ class Admin::QuestionsController < Admin::AdminController
 
   def find_question
     @question = Question.find_by id: params[:id]
-
+    flash[:warning] = "abcd"
     return if @question
     redirect_to admin_categories_path
     flash[:warning] = "Không tìm thấy câu hỏi này"

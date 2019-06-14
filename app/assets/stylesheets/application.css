@@ -16,5 +16,6 @@
  *= require style
  *= require custom 
  *= require toastr.min
+ *= require jquery.countdown
  *= require_self
  */

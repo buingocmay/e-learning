@@ -1,0 +1,15 @@
+<% provide :title, "Kết quả tìm kiếm" %>
+<div class="">
+	<div class="newproducts-w3agile">
+		<div class="container list-search-courses">
+			<% if @courses.present? %>
+				<h3>Kết quả tìm kiếm</h3><br>
+				<%= render "courses/list_search_courses" %>
+			<% else %>
+				<h4>Không có kết quả nào</h4>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<div id="modal-register-course" class="modal fade" role="dialog"></div>

@@ -1,37 +1,33 @@
 <div class="register">
   <div class="container">
-    <h2>Sign up</h2>
+    <h2>Đăng ký</h2>
     <div class="login-form-grids">
       <%= form_for resource, as: resource_name, url: registration_path(resource_name) do |f| %>
         <%= devise_error_messages! %>
 
         <div class="form-group">
-          <%= f.label :name, class: "col-form-label" %><br />
-          <%= f.text_field :name, autofocus: true, class: "form-control field" %>
+          <%= f.text_field :name, autofocus: true, class: "field", placeholder: "Tên người dùng..." %>
         </div>
         
         <div class="form-group">
-          <%= f.label :email, class: "col-form-label" %><br />
-          <%= f.email_field :email, class: "form-control field" %>
+          <%= f.email_field :email, class: "field", placeholder: "Email..." %>
         </div>
 
         <div class="form-group">
-          <%= f.label :password, class: "col-form-label" %><br/>
-          <%= f.password_field :password, class: "form-control field" %>
+          <%= f.password_field :password, class: "field", placeholder: "Mật khẩu..." %>
         </div>
 
         <div class="form-group">
-          <%= f.label :password_confirmation, class: "col-form-label" %><br/>
-          <%= f.password_field :password_confirmation, class: "form-control field" %>
+          <%= f.password_field :password_confirmation, class: "field", placeholder: "Nhập lại mật khẩu..." %>
         </div>
 
         <div class="right-w3l">
           <div class="actions">
-            <%= f.submit "Sign up", class: "btn btn-submit btn-success" %>
+            <%= f.submit "Đăng ký" %>
           </div><br>
         </div>
 
-        <p class="text-center dont-do"><%= "Have an account?" %>
+        <p class="text-center dont-do"><%= "Đã có tài khoản?" %>
           <%= render "devise/shared/links" %>
         </p>
       <% end %>

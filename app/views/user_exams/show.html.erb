@@ -4,13 +4,20 @@
 	<div class="container">
 		<div class="typo-agile">
 			<h2 class="w3ls_head"><%= @user_exam.exam_structure.name %></h2>
+			<% if @user_exam.score == nil %>
+				<%= hidden_field_tag :remaining_time, @user_exam.exam_structure.time %>
+			  <div class="timer">
+			    <h4>Thời gian còn lại</h4>
+			    <div id="clock"></div>
+			  </div>
+			<% end %>
 			<div class="agile content-lesson">
 				<% @user_exam.exam_questions.each_with_index do|exam_question, index| %>
 					<div class="w3agile_description">
 						<h3>Câu <%= index+1 %>. <%= exam_question.question.content %></h3>
 						<% exam_question.question.choices.each do |choice|%>
 							<div>
-								<lable class="<%= "correct-answer" if choice.is_correct %>">
+								<lable class="<%= "correct-answer" if choice.is_correct && @user_exam.score != nil %>">
 									<input type="radio" name="<%= exam_question.id %>" value="<%= choice.id %>" <%= "checked" if exam_question.user_answer == choice.id %> >
 									<%= choice.content %>
 								</lable><br>
@@ -24,7 +31,7 @@
 					 <%= link_to "#", class: "btn btn-primary mb-3",
 	          data: {
 	            url: user_exam_submit_exam_path(@user_exam),
-	            user_exam_id: @user_exam.id
+	            userexam_id: @user_exam.id
 	          }, id: "submit-exam" do %>
 	          Nộp bài
 	        <% end %>
@@ -51,7 +58,8 @@ $(document).on('click', '#submit-exam', function() {
     type: 'POST',
     dataType: 'script',
     data: {
-    	arrAnswer: arrAnswer
+    	arrAnswer: arrAnswer,
+    	user_exam_id: $(this).data('userexamId')
     }
   });
 });

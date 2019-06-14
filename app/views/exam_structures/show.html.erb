@@ -51,20 +51,22 @@
 				<h2 class="w3ls_head"><%= @exam_structure.name %></h2>
 				<div class="w3agile_description">
 					<h4>Số câu hỏi: <%= @exam_structure.total_questions %> câu</h4>
-					<h4>Thời gian làm bài: <%= @exam_structure.time %> phút</h4>
+					<h4>Thời gian làm bài: <%= @exam_structure.time/60 %> phút</h4>
 				</div>
 				<div>
-					<h3>Các lần làm bài:</h3><br>
-					<ul>
-						<% @exam_structure.user_exams.each_with_index do |exam, index| %>
-							<% unless exam.score.nil? %>
-								<li>
-									Lần <%= index+1 %>: <%= exam.score %> điểm
-									<%= link_to "Xem lại", user_exam_path(exam) %>
-								</li>
+					<% if current_user.exams_by_exam_structure(@exam_structure.id).present? %>
+						<h3>Các lần làm bài:</h3><br>
+						<ul>
+							<% current_user.exams_by_exam_structure(@exam_structure.id).each_with_index do |exam, index| %>
+								<% unless exam.score.nil? %>
+									<li>
+										Lần <%= index+1 %>: <%= exam.score %>/100 điểm
+										<%= link_to "Xem lại", user_exam_path(exam) %>
+									</li>
+								<% end %>
 							<% end %>
-						<% end %>
-					</ul>
+						</ul>
+					<% end %>
 				</div>
 			</div>
 			<%= form_for (UserExam.new) do |f| %>
